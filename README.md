@@ -33,29 +33,29 @@
 -- #             Add this code snippet to "ox_inventory/modules/items/server.lua" on the bottom            #
 -- #                                                                                                       #
 -- #    Item('present', function(event, item, inventory, slot, data)                                       #
--- #    	if event == 'usingItem' then                                                                     #
--- #    		if Inventory.GetItem(inventory, item, inventory.items[slot].metadata, true) > 0 then           #
--- #    			return {                                                                                     #
--- #    				inventory.label, event, 'external item use poggies'                                        #
--- #    			}                                                                                            #
--- #    		end                                                                                            #
--- #    	elseif event == 'usedItem' then                                                                  #
--- #    		--print(('%s has used %s on slot %s'):format(inventory.label, item.label, slot))               #
+-- #    	if event == 'usingItem' then                                                                   #
+-- #    		if Inventory.GetItem(inventory, item, inventory.items[slot].metadata, true) > 0 then       #
+-- #    			return {                                                                               #
+-- #    				inventory.label, event, 'external item use poggies'                                #
+-- #    			}                                                                                      #
+-- #    		end                                                                                        #
+-- #    	elseif event == 'usedItem' then                                                                #
+-- #    		--print(('%s has used %s on slot %s'):format(inventory.label, item.label, slot))           #
 -- #                                                                                                       #
--- #    		local items = { -- what items to give after opening the present                                #
--- #    			{ name = 'bread', amount = 4 },                                                              #
--- #    			{ name = 'water', amount = 4 },                                                              #
--- #    			{ name = 'phone', amount = 1 }                                                               #
--- #    		}                                                                                              #
+-- #    		local items = { -- what items to give after opening the present                            #
+-- #    			{ name = 'bread', amount = 4 },                                                        #
+-- #    			{ name = 'water', amount = 4 },                                                        #
+-- #    			{ name = 'phone', amount = 1 }                                                         #
+-- #    		}                                                                                          #
 -- #                                                                                                       #
--- #    		for _, v in ipairs(items) do -- checking if the user can even carry any of the items           #
--- #    			if exports.ox_inventory:CanCarryItem(source, v.name, v.amount) then                          #
--- #    				exports.ox_inventory:AddItem(source, v.name, v.amount)                                     #
--- #    			else                                                                                         #
--- #    				print("no space for this item: " .. v.name)                                                #
--- #    			end                                                                                          #
--- #    		end                                                                                            #
--- #    	end                                                                                              #
+-- #    		for _, v in ipairs(items) do -- checking if the user can even carry any of the items       #
+-- #    			if exports.ox_inventory:CanCarryItem(source, v.name, v.amount) then                    #
+-- #    				exports.ox_inventory:AddItem(source, v.name, v.amount)                             #
+-- #    			else                                                                                   #
+-- #    				print("no space for this item: " .. v.name)                                        #
+-- #    			end                                                                                    #
+-- #    		end                                                                                        #
+-- #    	end                                                                                            #
 -- #    end)                                                                                               #
 -- #                                                                                                       #
 -- #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
