@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
-author 'OnlyScripts / veryappropriatename & coy_boy'
+author 'OnlyScripts / veryappropriatename'
 description 'This script lets players open a gift every x hours/minutes || You may not re-sell or re-publish on other websites without consent!'
 version '1.0.0'
 
@@ -16,7 +16,7 @@ shared_scripts {
 client_scripts {
     'shared/config.lua',
     'locales/*.lua',
-	'client/client.lua',
+    'client/client.lua',
 }
 
 server_scripts {
