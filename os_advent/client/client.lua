@@ -132,7 +132,6 @@ Citizen.CreateThread(function()
                         obj = Config.Prop
                     end
 
-                    -- Only add the target button once when the player is in range
                     if not interactionButtonActive then
                         options = {
                             {
@@ -144,7 +143,7 @@ Citizen.CreateThread(function()
                             }
                         }
                         exports.ox_target:addModel(obj, options)
-                        interactionButtonActive = true  -- Button is now active
+                        interactionButtonActive = true
                     end
                 else
                     ESX.ShowHelpNotification(_U("interact"))
@@ -153,11 +152,10 @@ Citizen.CreateThread(function()
                     end
                 end
             else
-                -- Remove the interaction button if the player moves out of range
                 if interactionButtonActive then
                     exports.ox_target:removeModel(Config.Ped)
                     exports.ox_target:removeModel(Config.Prop)
-                    interactionButtonActive = false  -- Button is no longer active
+                    interactionButtonActive = false
                 end
             end
         else
