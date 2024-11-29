@@ -119,7 +119,7 @@ end)
 
 
 -- Give player their present and enter lastPickup in database
-RegisterNetEvent('os_advent:aZ3x1Y') -- Hiding from cheaters, also banning cheaters if triggered in wrong place (if enabled in config)
+RegisterNetEvent('os_advent:aZ3x1Y') -- Hiding from cheaters, also kicking cheaters if triggered in wrong place (if enabled in config)
 AddEventHandler('os_advent:aZ3x1Y', function(sourceID, distPlayer, distInteract, identifier)
     local source = source
 
