@@ -199,13 +199,16 @@ AddEventHandler('os_advent:g51Jkl0l', function(playerId)
         if xPlayer then
             local identifier = xPlayer.getIdentifier()
             TriggerEvent('os_advent:aZ3x1Y', source, 1, 10000, identifier)
-            notify(source, "ox", _U('titleSuccess'), _U('adminGiftGiven'), "top", "success")
-            notify(source, "esx", _U('adminGiftGiven'))
+            if Config.UseOXnotification then
+                notify(source, "ox", _U('titleSuccess'), _U('adminGiftGiven'), "top", "success")
+            else
+                notify(source, "esx", _U('adminGiftGiven'))
+            end
         else
             print("^1ERROR:^0 Player not found with ID " .. tostring(playerId))
         end
     else
-        print("^1ERROR:^0 Invalid player ID provided.")
+        print("^1ERROR:^0 Invalid player ID provided")
     end
 end)
 
@@ -214,8 +217,11 @@ RegisterNetEvent('os_advent:st01Jkl0l')
 AddEventHandler('os_advent:st01Jkl0l', function()
     if not Config.Stopped then
         Config.Stopped = true
-        notify(source, "ox", _U('titleSuccess'), _U('StoppedEventDes'), "top", "success")
-        notify(source, "esx", _U('StoppedEventDes'))
+        if Config.UseOXnotification then
+            notify(source, "ox", _U('titleSuccess'), _U('StoppedEventDes'), "top", "success")
+        else
+            notify(source, "esx", _U('StoppedEventDes'))
+        end
     end
 end)
 
@@ -224,8 +230,11 @@ RegisterNetEvent('os_advent:st41Jkl0l')
 AddEventHandler('os_advent:st41Jkl0l', function()
     if Config.Stopped then
         Config.Stopped = false
-        notify(source, "ox", _U('titleSuccesStarted'), _U('StartedEventDes'), "top", "success")
-        notify(source, "esx", _U('StartedEventDes'))
+        if Config.UseOXnotification then
+            notify(source, "ox", _U('titleSuccesStarted'), _U('StartedEventDes'), "top", "success")
+        else
+            notify(source, "esx", _U('StartedEventDes'))
+        end
     end
 end)
 
@@ -233,7 +242,7 @@ end)
 RegisterNetEvent('os_advent:re53tkl0l')
 AddEventHandler('os_advent:re53tkl0l', function(playerId)
     if not playerId or playerId <= 0 then
-        print("^1ERROR:^0 Invalid player ID received.")
+        print("^1ERROR:^0 Invalid player ID received")
         return
     end
 
@@ -257,8 +266,11 @@ AddEventHandler('os_advent:re53tkl0l', function(playerId)
     }, function(affectedRows)
         --print("^2DEBUG:^0 Rows affected: " .. affectedRows)
         if affectedRows > 0 then
-            notify(playerId, "ox", _U('resetTitle'), _U('resetDescription', xPlayer.getName()), "top", "success")
-            notify(playerId, "esx", _U('resetDescription', xPlayer.getName()))
+            if Config.UseOXnotification then
+                notify(playerId, "ox", _U('resetTitle'), _U('resetDescription', xPlayer.getName()), "top", "success")
+            else
+                notify(playerId, "esx", _U('resetDescription', xPlayer.getName()))
+            end
         else
             print("^1ERROR:^0 Failed to update last_pickup for player: " .. identifier)
         end
