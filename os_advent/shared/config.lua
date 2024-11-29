@@ -51,6 +51,14 @@ Config.Prop                 = "prop_xmas_tree_int"
 Config.InteractionRange     = 2                                   --  At what range can the user interact?
 Config.Cooldown             = 1440                                --  Time in minutes (1440 = 24 Hours)
 
+--  Blip Settings
+Config.UseBlip              = false                               --  Show blip on map?
+Config.BlipName             = "Santa Claus"                       --  Name displayed on the map
+Config.BlipSprite           = 781                                 --  Present
+Config.BlipDisplay          = 2                                   --  Blip behaviour -- Check https://docs.fivem.net/natives/?_0x9029B2F3DA924928
+Config.BlipScale            = 0.8                                 --  Blip scale on map
+Config.BlipColour           = 1                                   --  Blip colour
+
 --  Optional Settings
 Config.EnableAdminCommands  = true                                --  Commands for admins?
 Config.OxLib                = true                                --  Using ox_lib?

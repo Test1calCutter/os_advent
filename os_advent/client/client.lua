@@ -2,7 +2,16 @@ ESX = nil
 local spawned = false
 local npc = nil
 local prop = nil
+local blip = nil
+local showing = true
 local interactionButtonActive = false
+local BlipName = Config.BlipName
+local BlipSprite = Config.BlipSprite
+local BlipDisplay = Config.BlipDisplay
+local BlipScale = Config.BlipScale
+local BlipColour = Config.BlipColour
+local blipCreated = false
+
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -77,8 +86,6 @@ function SpawnProp()
     end
 end
 
-
-
 function DeleteProp()
     if spawned and DoesEntityExist(prop) then
         spawned = false
@@ -87,6 +94,20 @@ function DeleteProp()
     end
 end
 
+function bliping()
+    if showing and not blipCreated then
+        AddTextEntry('label', BlipName)
+        blip = AddBlipForCoord(Config.Location.x, Config.Location.y, Config.Location.z)
+        SetBlipSprite(blip, BlipSprite)
+        SetBlipDisplay(blip, BlipDisplay)
+        SetBlipScale(blip, BlipScale)
+        SetBlipColour(blip, BlipColour)
+        SetBlipAsShortRange(blip, true)
+        BeginTextCommandSetBlipName("label")
+        EndTextCommandSetBlipName(blip)
+        blipCreated = true
+    end
+end
 
 Citizen.CreateThread(function()
     while true do
@@ -94,6 +115,11 @@ Citizen.CreateThread(function()
         local playerPed = PlayerPedId()
         local positionInteraction = Config.Location
         
+        if Config.UseBlip then
+            showing = true
+            bliping()
+        end
+
         if playerPed then
             local positionPlayer = GetEntityCoords(playerPed)
             local interactDistance = GetDistanceBetweenCoords(
